@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="" placeholder="enter task here" id="input">
+    <button>add</button>
+
+    <ul id="additem">
+
+    </ul>
+
+
+    <script>
+        var data = document.getElementById("input")
+        var addbtn = document.getElementsByTagName("button")
+        var display = document.getElementById("additem")
+
+        addbtn[0].addEventListener("click", () => {
+
+            var li = document.createElement("li")
+            li.innerText += data.value;
+            display.appendChild(li);
+
+            var delebtn = document.createElement("button")
+            delebtn.innerText = "x";
+            delebtn.style.marginLeft = "10px"
+            delebtn.style.border = "none";
+            li.appendChild(delebtn);
+            display.appendChild(li);
+
+            delebtn.addEventListener("click", () => {
+                display.removeChild(li)
+            })
+
+
+            var edibtn = document.createElement("button");
+            edibtn.innerText = "edit";
+            edibtn.style.marginLeft = "10px";
+            li.appendChild(edibtn);
+            display.appendChild(li);
+
+
+            edibtn.addEventListener("click", () => {
+
+
+                var newData = prompt(`enter date ${li.firstChild.textContent}`)
+                if (newData !== null) {
+                    li.innerText = newData;
+                    li.appendChild(delebtn)
+                    li.appendChild(edibtn);
+                }
+                else {
+                    alert("task canot b empty")
+                }
+
+                
+
+            });
+
+
+            data.value = "";
+
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
